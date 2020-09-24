@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ToDo from './todoItem';
 import Header from './header';
-
+import InputArea from './inputArea';
 
 function App() {
 
@@ -13,7 +13,7 @@ function App() {
     setInputText(newValue);
   }
 
-  function handleSubmit(){
+  function addItem(){
     setItems(prevItems => {
       return [
         ...prevItems,
@@ -33,12 +33,11 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <div className="form">
-        <input type="text" onChange={handleInput} value={inputText} />
-        <button type="submit" onClick={handleSubmit}>
-          <span>Add</span>
-        </button>
-      </div>
+      <InputArea 
+        onChange={handleInput}
+        onClick={addItem}
+        value={inputText}
+      />
       <div>
         <ul>
           {items.map((todoItem, index) => (
